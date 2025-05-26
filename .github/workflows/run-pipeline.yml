@@ -14,7 +14,6 @@ jobs:
         shell: cmd
         run: |
           .\.venv\Scripts\activate.bat
-          #pip install -r requirements.txt
 
       - name: Executar pipeline
         shell: cmd
