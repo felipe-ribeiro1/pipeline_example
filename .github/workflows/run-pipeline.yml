@@ -13,11 +13,11 @@ jobs:
       - name: Activate virtual environment and install dependencies
         shell: powershell
         run: |
-          .\.venv\Scripts\Activate.ps1
+          .\.venv\Scripts\activate.ps1
           #pip install -r requirements.txt
 
       - name: Run pipeline
         shell: powershell
         run: |
-          .\.venv\Scripts\Activate.ps1
+          .\.venv\Scripts\activate.ps1
           python pipeline.py
