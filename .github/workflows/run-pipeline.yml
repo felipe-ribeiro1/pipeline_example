@@ -11,12 +11,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Ativar ambiente virtual
-        shell: pwsh
+        shell: powershell
         run: |
           .\.venv\Scripts\Activate.ps1
 
       - name: Executar pipeline
-        shell: pwsh
+        shell: powershell
         run: |
           .\.venv\Scripts\Activate.ps1
           python pipeline.py
