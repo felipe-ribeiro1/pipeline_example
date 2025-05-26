@@ -6,24 +6,18 @@ on:
 jobs:
   run-pipeline:
     runs-on: self-hosted
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      #- name: Set up Python
-      #  uses: actions/setup-python@v5
-       # with:
-       #   python-version: '3.14'
-
       - name: Activate virtual environment and install dependencies
-        shell: bash
+        shell: powershell
         run: |
-          source .venv\Scripts\activate 
+          .\.venv\Scripts\Activate.ps1
           #pip install -r requirements.txt
 
       - name: Run pipeline
-        shell: bash
+        shell: powershell
         run: |
-          source .venv\Scripts\activate 
+          .\.venv\Scripts\Activate.ps1
           python pipeline.py
