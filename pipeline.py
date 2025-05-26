@@ -1,16 +1,26 @@
 import logging
+import sys
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.FileHandler("pipeline.log"),
-        logging.StreamHandler()
-    ]
-)
+# Configure the root logger
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
-logger = logging.getLogger(__name__)
+# Remove all existing handlers
+for handler in logger.handlers[:]:
+    logger.removeHandler(handler)
 
+# Create a StreamHandler to output logs to the console
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setLevel(logging.INFO)
+
+# Define a formatter and set it for the handler
+formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(message)s')
+stream_handler.setFormatter(formatter)
+
+# Add the handler to the logger
+logger.addHandler(stream_handler)
+
+# Example functions
 def extract_data():
     logger.info("Extracting data...")
     return [1, 2, 3]
