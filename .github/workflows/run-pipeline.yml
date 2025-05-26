@@ -10,14 +10,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Activate virtual environment and install dependencies
-        shell: powershell
+      - name: Ativar ambiente virtual
+        shell: cmd
         run: |
-          .\.venv\Scripts\activate.ps1
-          #pip install -r requirements.txt
+          .\.venv\Scripts\activate.bat
+          pip install -r requirements.txt
 
-      - name: Run pipeline
-        shell: powershell
+      - name: Executar pipeline
+        shell: cmd
         run: |
-          .\.venv\Scripts\activate.ps1
+          .\.venv\Scripts\activate.bat
           python pipeline.py
