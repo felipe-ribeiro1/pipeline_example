@@ -5,7 +5,7 @@ on:
 
 jobs:
   run-pipeline:
-    runs-on: ubuntu-latest   # or self-hosted if you have a local runner
+    runs-on: self-hosted   # or self-hosted if you have a local runner
 
     steps:
       - name: Checkout code
