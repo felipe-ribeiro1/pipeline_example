@@ -10,12 +10,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Ativar ambiente virtual
+      - name: Setup virtual environment
         shell: powershell
         run: |
-          .\.venv\Scripts\Activate.ps1
+          $venvPath = ".\.venv"
+          $activateScript = "$venvPath\Scripts\Activate.ps1"
 
-      - name: Executar pipeline
+          if (-Not (Test-Path "$activateScript")) {
+              Write-Output "Virtual environment not found. Creating it..."
+              python -m venv $venvPath
+              & "$activateScript"
+              pip install --upgrade pip
+              pip install -r requirements.txt
+          } else {
+              Write-Output "Virtual environment found. Skipping creation."
+          }
+
+      - name: Run pipeline
         shell: powershell
         run: |
           .\.venv\Scripts\Activate.ps1
